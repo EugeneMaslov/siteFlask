@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='flask.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css')}}">
+    <title>FlaskSite</title>
+</head>
+<body>
+        <form action="/" method="get">
+          <input type="submit" value="Назад">
+        </form>
+        <form class="con" action="first" method="post">
+          <p>µ</p>
+          <input id="mu" type="text" name="mu" value="{{mu}}" class="con">
+          <p>σ</p>
+          <input id="sigma" type="text" name="sigma" value="{{sigma}}" class="con">
+          <input type="submit">
+        </form>
+        {% for result in resultFirst %}
+          <div class="out">
+            <b>Среднее значение: {{result.mean()}}</b>
+            <b>Дисперсия: {{result.var()}}</b>
+            <b>Медиана: {{np.median(result)}}</b>
+            <b>Минимальный элемент: {{result.min()}}</b>
+            <b>Максимальный элемент: {{result.max()}}</b>
+          </div>
+        {% endfor %}
+</body>
+</html>
